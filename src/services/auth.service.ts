@@ -20,7 +20,7 @@ export class AuthService {
       .post<{ access_token: string }>(`${this.authApiUrl}/login`, loginForm)
       .subscribe((response: { access_token: string }) => {
         localStorage.setItem('token', response.access_token);
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/dashboard']);
       });
   }
 
