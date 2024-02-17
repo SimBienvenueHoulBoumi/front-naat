@@ -7,7 +7,7 @@ import LoginDto from '../../../models/auth.model';
 @Component({
   selector: 'app-login',
   standalone: true,
-  providers:[AuthService],
+  providers: [AuthService],
   imports: [ReactiveFormsModule, HttpClientModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',

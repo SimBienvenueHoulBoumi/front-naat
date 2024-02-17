@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import ProfileDto from '../../models/profile.model';
 
 @Component({
   selector: 'app-profile',
@@ -12,9 +13,15 @@ import { AuthService } from '../../services/auth.service';
 export class ProfileComponent {
   authService = inject(AuthService);
 
+  profile!: ProfileDto;
+
   ngOnInit() {
-    console.log(
-      this.authService.getProfile().subscribe((profile) => console.log(profile))
-    );
+    this.authService.getProfile().subscribe((profile: ProfileDto) => {
+      this.profile.email = profile.email;
+      this.profile.firstname = profile.firstname;
+      this.profile.lastname = profile.lastname;
+      
+      console.log(this.profile); // Déplacer ici pour afficher après l'obtention du profil
+    });
   }
 }
