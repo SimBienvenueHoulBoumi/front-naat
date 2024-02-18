@@ -45,4 +45,9 @@ export class AuthService {
       return new Observable<ProfileDto>();
     }
   }
+
+  logOut() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/auth/login']);
+  }
 }
