@@ -21,7 +21,8 @@ export const tokenGuard: CanActivateFn = (
       if (isAuthenticated) {
         return true;
       } else {
-        return router.parseUrl('/auth/login');
+        router.parseUrl('/auth/login');
+        return false;
       }
     })
   );

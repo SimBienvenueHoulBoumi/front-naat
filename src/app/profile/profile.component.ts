@@ -15,15 +15,13 @@ export class ProfileComponent implements OnInit {
   authService = inject(AuthService);
   isLoading: boolean = false;
 
-  profile!: ProfileDto;
+  profile: ProfileDto = new ProfileDto();
 
   ngOnInit() {
     this.authService.getProfile().subscribe((profile: ProfileDto) => {
-      this.profile.email = profile.email;
-      this.profile.firstname = profile.firstname;
-      this.profile.lastname = profile.lastname;
-
-      console.log(this.profile); // Déplacer ici pour afficher après l'obtention du profil
+      this.profile.setFirstname(profile.firstname);
+      this.profile.setLastname(profile.lastname);
+      this.profile.setEmail(profile.email);
     });
 
     setTimeout(() => {

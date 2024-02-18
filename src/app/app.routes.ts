@@ -5,6 +5,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { tokenGuard } from '../guards/token.guard';
 import { authGuard } from '../guards/auth.guard';
+import { CreateNewTaskComponent } from './components/create-new-task/create-new-task.component';
 
 export const routes: Routes = [
   {
@@ -37,8 +38,14 @@ export const routes: Routes = [
     canActivate: [tokenGuard],
   },
   {
+    path: 'newtask',
+    component: CreateNewTaskComponent,
+    canActivate: [tokenGuard],
+  },
+  {
     path: 'page-not-found',
     component: PageNotFoundComponent,
+    canActivate: [tokenGuard],
   },
   {
     path: '**',

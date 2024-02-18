@@ -21,7 +21,8 @@ export const authGuard: CanActivateFn = (
       if (!isAuthenticated) {
         return true;
       } else {
-        return router.parseUrl('/profile');
+        router.parseUrl('/profile');
+        return false;
       }
     })
   );

@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import LoginDto from '../../../models/auth.model';
@@ -21,13 +21,17 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   authService = inject(AuthService);
 
   loginForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
   });
+
+  ngOnInit() {
+    console.log(this.authService.authenticate());
+  }
 
   onSubmit(e: Event) {
     e.preventDefault();
