@@ -5,12 +5,11 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { tokenGuard } from '../guards/token.guard';
 import { authGuard } from '../guards/auth.guard';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth/login',
+    redirectTo: 'profile',
     pathMatch: 'full',
   },
   {
@@ -35,11 +34,6 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [tokenGuard],
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
     canActivate: [tokenGuard],
   },
   {

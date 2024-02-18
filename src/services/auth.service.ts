@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   private authApiUrl = 'http://localhost:4000/auth';
-  
+
   constructor(private http: HttpClient, private router: Router) {}
 
   login(loginForm: LoginDto, e: Event): void {
@@ -20,18 +20,16 @@ export class AuthService {
       .post<{ access_token: string }>(`${this.authApiUrl}/login`, loginForm)
       .subscribe((response: { access_token: string }) => {
         localStorage.setItem('token', response.access_token);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/profile']);
       });
   }
 
   authenticate(): boolean {
     if (typeof localStorage !== 'undefined') {
       const token = localStorage.getItem('token');
-      if (token) {
-        return true;
-      }
+      return !!token; // Utilisation de la double négation pour convertir la valeur en un booléen
     }
-    return false;
+    return false; // Retourne false si localStorage n'est pas pris en charge
   }
 
   getProfile(): Observable<ProfileDto> {

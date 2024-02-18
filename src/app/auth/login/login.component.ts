@@ -3,12 +3,21 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import LoginDto from '../../../models/auth.model';
+import { LoadingComponent } from '../../components/loading/loading.component';
+import { CommonModule } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   providers: [AuthService],
-  imports: [ReactiveFormsModule, HttpClientModule],
+  imports: [
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    HttpClientModule,
+    LoadingComponent,
+    CommonModule,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
